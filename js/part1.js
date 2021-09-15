@@ -109,17 +109,9 @@ function SUBMIT_DEBRIEFING_Q() {
 }
 
 var subj_options = {
-    subjNumScript: SUBJ_NUM_SCRIPT,
-    subjNumFile: SUBJ_NUM_FILE,
     titles: SUBJ_TITLES,
-    invalidIDFunc: INVALID_ID_FUNC,
     viewportMinW: VIEWPORT_MIN_W,
     viewportMinH: VIEWPORT_MIN_H,
-    savingScript: SAVING_SCRIPT,
-    visitFile: VISIT_FILE,
-    attritionFile: ATTRITION_FILE,
-    subjFile: SUBJ_FILE,
-    savingDir: SAVING_DIR,
     handleVisibilityChange: HANDLE_VISIBILITY_CHANGE
 };
 
@@ -366,9 +358,6 @@ trial_options = {
     trialN: TRIAL_N,
     titles: TRIAL_TITLES,
     stimPath: STIM_PATH,
-    dataFile: TRIAL_FILE,
-    savingScript: SAVING_SCRIPT,
-    savingDir: SAVING_DIR,
     trialList: false,
     pracList: false,
     intertrialInterval: INTERTRIAL_INTERVAL,
