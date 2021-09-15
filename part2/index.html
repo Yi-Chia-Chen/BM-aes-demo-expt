@@ -1,0 +1,128 @@
+<!-- Yi-Chia Chen -->
+
+<!DOCTYPE html>
+<html lang='en' translate='no'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>UCLA Experiment</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Raleway&display=swap' />
+    <link rel='stylesheet' href='../style.css' />
+</head>
+
+<body>
+    <noscript>It seems that JavaScript is disabled in your browser. Please go to settings and enable JavaScript for this experiment.</noscript>
+
+    <!--======== INSTRUCTIONS ========-->
+    <div class='pageBox' id='instrBox'>
+        <p id='instrText'></p>
+        <img id='instrImg' alt='Image Error: Please contact yichiachen@ucla.edu and include the code "IMG-ERROR" to receive your credit.'></img>
+        <div class='button' id='nextButton' onclick='instr.next()'>NEXT</div>
+    </div>
+
+    <!--======== INSTRUCTIONS QUIZ 1 ========-->
+    <div class='pageBox' id='instrQBox'>
+        <div class='boldText'>What is your job in this part of the experiment?</div>
+        <label><div class='option'><input class='optionRadio' type='radio' name='instrQ' value='Forgot' /><div class='optionText'>Select this option if you do not remember.</div></div></label>
+        <label><div class='option'><input class='optionRadio' type='radio' name='instrQ' value='Energy' /><div class='optionText'>To rate how energetic each creature looks to you.</div></div></label>
+        <label><div class='option'><input class='optionRadio' type='radio' name='instrQ' value='Personality' /><div class='optionText'>To rate how much you like the personality of each creature.</div></div></label>
+        <label><div class='option'><input class='optionRadio' type='radio' name='instrQ' value='Lifelike' /><div class='optionText'>To rate how lifelike each creature looks to you.</div></div></label>
+        <label><div class='option'><input class='optionRadio' type='radio' name='instrQ' value='Pleasing' /><div class='optionText'>To rate how visually pleasing each creature looks to you.</div></div></label>
+        <div class='button' onclick='SUBMIT_INSTR_Q()'>SUBMIT</div>
+        <br />
+        <div class='warning' id='instrQWarning'></div>
+        <br />
+    </div>
+
+    <!--======== EXPERIMENT TRIAL ========-->
+    <div class='pageBox' id='trialBox'>
+        <div class='progressBar'><span id='progress'>0</span>% completed</div>
+        <div class='testVidPlaceHolder'>
+            <video class='testVid' id='testVid' preload='auto' muted>
+                <source src='../Stimuli/104_19_21_upright_congruent.mp4' type='video/mp4' />
+                Video Error: Please contact yichiachen@ucla.edu and include your sona ID and the code "VID-ERROR" to receive your credit.
+            </video>
+        </div>
+        <div id='bufferDiv' alt=''>
+            <video id='bufferVid' preload='auto'>
+                <source src='../Stimuli/104_19_21_upright_congruent.mp4' type='video/mp4' />
+            </video>
+        </div>
+        <div class='ratingContainer' id='ratingContainer'>
+            <div class='ratingButton r6' id='r6'><p class='ratingLabels'>Certainly<br /><span class='adj'>Lifelike</span></p></div>
+            <div class='ratingButton r5' id='r5'><p class='ratingLabels'>Probably<br /><span class='adj'>Lifelike</span></p></div>
+            <div class='ratingButton r4' id='r4'><p class='ratingLabels'>Guess<br /><span class='adj'>Lifelike</span></p></div>
+            <div class='ratingButton r3' id='r3'><p class='ratingLabels'>Guess<br />Not <span class='adj'>Lifelike</span></p></div>
+            <div class='ratingButton r2' id='r2'><p class='ratingLabels'>Probably<br />Not <span class='adj'>Lifelike</span></p></div>
+            <div class='ratingButton r1' id='r1'><p class='ratingLabels'>Certainly<br />Not <span class='adj'>Lifelike</span></p></div>
+        </div>
+    </div>
+
+    <!--======== EXPERIMENT BREAK ========-->
+    <div class='pageBox' id='restBox'>
+        <p id='restText'>You are done with 50% of this part!<br /><br />Take a short break now and hit space to continue whenever you are ready.</p>
+    </div>
+
+    <!--======== DEBRIEFING QUESTION ========-->
+    <div class='pageBox' id='questionsBox'>
+        You are almost done! Please answer these last questions:<br /><br /><br />
+
+        <div class='boldText'>Did you complete this part of the experiment seriously throughout (without randomly responding)?</div>
+        <div class='smallDimText'>You will receive your credit regardless of what your answer is here. Please be honest for science! Thanks!</div>
+        <label><div class='option'><input class='optionRadio' type='radio' name='serious' value='0' /><div class='optionText'>No, I didn't.</div></div></label>
+        <label><div class='option'><input class='optionRadio' type='radio' name='serious' value='1' /><div class='optionText'>Yes, I did.</div></div></label>
+
+        <br /><br /><br />
+
+        <div class='boldText'> Was any part of the procedure unclear? Did you have any problems completing any of the tasks?</div>
+        <div class='smallDimText'>You will receive your credit regardless of what your answer is here. Please be honest for science! Thanks!</div>
+        <textarea id='problems' rows='3' cols='90'></textarea>
+
+
+        <br /><br /><br />
+
+        <div class='boldText'>What is your gender?</div>
+          <label><div class='option'><input class='optionRadio' type='radio' name='gender' value='F' /><div class='optionText'>Female</div></div></label>
+          <label><div class='option'><input class='optionRadio' type='radio' name='gender' value='M' /><div class='optionText'>Male</div></div></label>
+          <label><div class='option'><input class='optionRadio' type='radio' name='gender' value='O' /><div class='optionText'>Other</div></div></label>
+          <label><div class='option'><input class='optionRadio' type='radio' name='gender' value='N' /><div class='optionText'>I would rather not say</div></div></label>
+
+        <br /><br /><br />
+
+        <div class='boldText'>What is your age?</div>
+        <input type='number' id='age' min='0' max='199'/>
+
+        <br /><br /><br />
+
+        <div class='button' onclick='SUBMIT_DEBRIEFING_Q()'>SUBMIT</div>
+        <br />
+        <div class='warning' id='Qwarning'></div>
+        <br />
+    </div>
+
+    <!--======== DEBRIEFING ========-->
+    <div class='pageBox' id='debriefingBox'>
+        You are done! Thank you very much! Whenever you are ready, click END to get your credit.<br /><br />
+        Interested in what we are testing? See below for more information!<br /><br />
+        <div class='button' onclick='END_TO_SONA()'>END</div>
+        <br /><br />
+        <strong>Debriefing Sheet</strong><br />
+        Thanks for participating in the experiment.<br /><br />
+        We are exploring the nature of people's visual experience of actions. One of the most salient component in our experience is arguably aesthetic experience. Without any explicit tasks, we often spontaneously noticed that some people act more elegantly than others. Are these kinds of experience arise from specialized mental system for analyzing actions/movements of living things? Or they are in fact part of a general system for any kind of motion?<br /><br />
+        In this particular study, we look into how people's aesthetic experience relates to how much the movements seem to be from a living thing. If the aesthetic experience relies on specialized system for animate movements, we imagine the experience for less life-like creatures would differ from those that are mor life-like. Alternatively, there could be no such relationship if a general system for motion is responsible for our experience.<br /><br />
+        As (maybe nerdy) vision scientists, we are fascinated by the sensitivity of human visual system on actions and we are hoping to learn more and more about it through these kinds of studies. We hope you enjoy this study as much as we do. And, if you have any questions or are curious about our work, please feel free to contact the experimenters:<br /><br />
+        Yi-Chia Chen & Hongjing Lu<br />
+        yichiachen@ucla.edu & hongjing@ucla.edu<br />
+        UCLA Computational Vision and Learning Laboratory<br /><br /><br />
+        <strong>Here is some additional information about the bigger project this study is a part of:</strong><br />
+        We are interested in understanding how people are able to perceive human actions in a visual scene, and how this information is processed to enable them to make decisions about the human body movement. By showing moving patterns at various speeds and in various combinations, we are able to determine whether different cues make it harder or easier for you to make judgments about the human movement in the target display.
+    </div>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mobile-detect/1.4.3/mobile-detect.min.js'></script>
+    <script src='../js/func.js'></script>
+    <script src='../js/expt.js'></script>
+    <script src='../js/shared.js'></script>
+    <script src='../js/part2.js'></script>
+</body>
+
+</html>
